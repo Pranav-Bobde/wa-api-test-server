@@ -22,7 +22,3 @@ app.post("/cb", (req, res) => {
   console.log("BODY: ", req.body);
   return
 });
-
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
-});
