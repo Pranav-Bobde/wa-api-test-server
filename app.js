@@ -12,13 +12,13 @@ app.get("/", (req, res) => {
 app.get("/cb", (req, res) => {
   console.log("REQ: ", req);
   console.log("BODY: ", req.body);
-  return
+  res.send("CB GET");
 });
 
 app.post("/cb", (req, res) => {
   console.log("REQ: ", req);
   console.log("BODY: ", req.body);
-  return
+  res.send("CB POST");
 });
 
 module.exports = app;
