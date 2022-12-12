@@ -24,8 +24,11 @@ app.get("/cb", (req, res) => {
 
 app.post("/cb", (req, res) => {
   console.log("REQ: ", req);
-  console.log("BODY: ", req.body);
-  console.log("BODY ENTRY: ", JSON.stringify(req.body.entry));
+  const body = req.body;
+  const entries = body.entry;
+  const id = entries[0].id;
+  const changes = entries[0].changes;
+  const number = changes[0].value.contact[0].wa_id;
   res.send("CB POST");
 });
 
