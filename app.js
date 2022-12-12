@@ -23,13 +23,24 @@ app.get("/cb", (req, res) => {
 });
 
 app.post("/cb", (req, res) => {
-  console.log("REQ: ", req);
-  const body = req.body;
-  const entries = body.entry;
-  const id = entries[0].id;
-  const changes = entries[0].changes;
-  const number = changes[0].value.contact[0].wa_id;
-  res.send("CB POST");
+  const body_param = req.body;
+  if (body_param.object) {
+    if (
+      body_param.entry &&
+      body_param.entry[0].changes &&
+      body_param.entry[0].changes[0]["value"].messages
+    ) {
+      console.log(
+        "Number: ",
+        body_param.entry[0].changes[0]["value"].messages[0].from
+      );
+      console.log(
+        "Message: ",
+        body_param.entry[0].changes[0]["value"].messages[0].text.body
+      );
+        res.sendStatus(200);
+    }
+  }
 });
 
 module.exports = app;
