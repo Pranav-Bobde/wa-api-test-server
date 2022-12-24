@@ -10,7 +10,7 @@ function replyMessage() {
     method: "POST",
     headers: {
       Authorization:
-        "Bearer EABRarrCPM1gBAOrX1UMyXQ5XFwDTVWepqMjYZAUgEmTDi4pPJiatRH8iFZARCL5GNSoyrOxsAk6BwhDZC7aIMPeuv4UftAWFlu4pBgxP8PlXZBAcHnXEv3BrWyPrOQWndFQ4YRmikTh8pFV9WB6ZBVrtrXZAjzFTFHpco6yBPJOtd8DWtGkq9168uZCHNNWi3NEZA7PdqvZB9rYOGyBi4NufJmMSpSUVLulQZD",
+        `Bearer ${process.env.ACCESS_TOKEN}`,
       "Content-Type": "application/json",
     },
   };
@@ -99,7 +99,7 @@ app.post("/cb", (req, res) => {
   }
 });
 
-app.post("/whatsapp", (req, res) => {
+app.get("/whatsapp", (req, res) => {
   const { data } = req.query;
   console.log(data);
   res.redirect("https://wa-api-test.netlify.app/#/");
