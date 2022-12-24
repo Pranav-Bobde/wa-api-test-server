@@ -3,14 +3,14 @@ const parser = require("body-parser");
 const app = express();
 const https = require("https");
 
-function replyMessage() {
+function sendMessage() {
   const options = {
     hostname: "graph.facebook.com",
-    path: "/v15.0/101383002832623/messages",
+    path: "/v15.0/108004132170880/messages",
     method: "POST",
     headers: {
       Authorization:
-        `Bearer ${process.env.ACCESS_TOKEN}`,
+        "Bearer EABRarrCPM1gBAOrX1UMyXQ5XFwDTVWepqMjYZAUgEmTDi4pPJiatRH8iFZARCL5GNSoyrOxsAk6BwhDZC7aIMPeuv4UftAWFlu4pBgxP8PlXZBAcHnXEv3BrWyPrOQWndFQ4YRmikTh8pFV9WB6ZBVrtrXZAjzFTFHpco6yBPJOtd8DWtGkq9168uZCHNNWi3NEZA7PdqvZB9rYOGyBi4NufJmMSpSUVLulQZD",
       "Content-Type": "application/json",
     },
   };
@@ -92,7 +92,7 @@ app.post("/cb", (req, res) => {
         body_param.entry[0].changes[0]["value"].messages[0].text.body
       );
 
-      replyMessage();
+      sendMessage();
 
       res.sendStatus(200);
     }
