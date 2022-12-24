@@ -38,9 +38,14 @@ app.post("/cb", (req, res) => {
         "Message: ",
         body_param.entry[0].changes[0]["value"].messages[0].text.body
       );
-        res.sendStatus(200);
+      res.sendStatus(200);
     }
   }
 });
 
+app.post("/whatsapp", (req, res) => {
+  const { data } = req.query;
+  console.log(data);
+  res.redirect('https://wa-api-test.netlify.app/#/');
+});
 module.exports = app;
