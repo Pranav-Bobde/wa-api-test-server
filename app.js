@@ -3,7 +3,7 @@ const parser = require("body-parser");
 const app = express();
 const https = require("https");
 
-function sendMessage() {
+function sendMessage(number) {
   const options = {
     hostname: "graph.facebook.com",
     path: "/v15.0/108004132170880/messages",
@@ -30,7 +30,7 @@ function sendMessage() {
   req.write(
     JSON.stringify({
       messaging_product: "whatsapp",
-      to: "919370892274",
+      to: `${number}`,
       type: "template",
       template: {
         name: "sample_shipping_confirmation",
@@ -92,7 +92,7 @@ app.post("/cb", (req, res) => {
         body_param.entry[0].changes[0]["value"].messages[0].text.body
       );
 
-      sendMessage();
+      sendMessage(body_param.entry[0].changes[0]["value"].messages[0].from);
 
       res.sendStatus(200);
     }
