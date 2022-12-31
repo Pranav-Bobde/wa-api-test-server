@@ -1,11 +1,14 @@
-const express = require("express");
 const parser = require("body-parser");
-const app = express();
-const https = require("https");
-const Pool = require("pg").Pool;
 const jwt = require("jsonwebtoken");
+const express = require("express");
 const axios = require("axios");
+const Pool = require("pg").Pool;
+const app = express();
+
 require("dotenv").config();
+
+app.use(parser.json());
+app.use(parser.urlencoded({ extended: false }));
 
 const pool = new Pool({
   user: process.env.POSTGRES_USER,
@@ -56,8 +59,6 @@ async function replyMessage(number, token) {
 }
 
 
-app.use(parser.json());
-app.use(parser.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
