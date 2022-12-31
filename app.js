@@ -140,6 +140,10 @@ app.post("/cb", async (req, res) => {
       res.sendStatus(200);
     }
   }
+
+  if (body_param.entry[0].changes[0].value.statuses) {
+    res.sendStatus(200);
+  }
 });
 
 app.get("/whatsapp", (req, res) => {
